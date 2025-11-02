@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waiter Training</title>
+  <link rel="stylesheet" href="assets/styles/style.css">
+  <link rel="preload" href="assets/fonts/Nandso.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+  <!-- START SCREEN -->
+  <section id="startScreen" class="screen active">
+    <div class="start-wrap">
+      <div class="card" role="group" aria-label="Start Card">
+        <div class="header"><img src="assets/images/logo-placeholder.png" alt="Logo placeholder" class="logo"></div>
+        <h1 class="title">Waiter Training</h1>
+        <p class="subtitle">Tap Start to begin</p>
+        <div class="actions">
+          <button id="startBtn" class="btn" aria-label="Start training">Start</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER PAGE -->
+  <section id="orderScreen" class="screen hidden" aria-label="Orders">
+    <header class="topbar">
+      <div>Tables cleared: <strong id="totalTables">0</strong></div>
+      <div class="timer">Timer: <strong id="roundTimer">00:00</strong></div>
+<button id="btnEndSession" class="btn secondary" style="padding:10px 14px;font-size:16px;border-radius:10px;">End session</button>
+    </header>
+    <div class="columns">
+      <div class="col"><div class="col-title">Table 1</div><div class="col-empty">Waiting for orders…</div></div>
+      <div class="col"><div class="col-title">Table 2</div><div class="col-empty">Waiting for orders…</div></div>
+      <div class="col"><div class="col-title">Table 3</div><div class="col-empty">Waiting for orders…</div></div>
+      <div class="col"><div class="col-title">Table 4</div><div class="col-empty">Waiting for orders…</div></div>
+    </div>
+  </section>
+
+  <!-- SCORE MODAL -->
+  <div id="scoreModal" class="modal" role="dialog" aria-modal="true" aria-label="Score">
+    <div class="modal-card">
+      <h2>Round Complete <span id="newBadge" class="badge new hidden">New personal best!</span></h2>
+      <div class="big" id="scoreVal">4 / 4 orders cleared</div>
+      <p class="subtitle">Your time: <strong id="timeVal">00:00</strong></p>
+      <p class="subtitle">Personal best: <strong id="pbVal">—</strong></p>
+<p class="subtitle">Total tables cleared: <strong id="totalTablesModal">0</strong></p>
+      <button id="btnAgain" class="btn">Try again</button>
+    </div>
+  </div>
+
+  <script src="assets/scripts/app.js"></script>
+
+  <!-- PB TOAST -->
+  <div id="pbToast" class="pb-toast" aria-hidden="true">
+    <div class="pb-toast-card">🎉 New personal best!</div>
+  </div>
+
+
+  <!-- END SESSION MODAL -->
+  <div id="endModal" class="modal" role="dialog" aria-modal="true" aria-label="Session Summary">
+    <div class="modal-card">
+      <h2>Session Summary</h2>
+      <p class="subtitle">Total tables cleared: <strong id="endTotal">0</strong></p>
+      <p class="subtitle">Average time (4 orders): <strong id="endAvgTime">00:00</strong></p>
+      <p class="subtitle">Quickest time (4 orders): <strong id="endFastest">00:00</strong></p>
+      <p class="subtitle">Average click colour: <span id="endAvgColour" class="chip state-green">Green</span></p>
+      <button id="btnStartOver" class="btn">Start again</button>
+    </div>
+  </div>
+
+</body>
+</html>

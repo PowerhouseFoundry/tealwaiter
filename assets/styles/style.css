@@ -1,0 +1,297 @@
+/* -----------------------------
+   Nando’s Font Setup
+----------------------------- */
+@font-face {
+  font-family: 'Nandso';
+  src: url('../fonts/Nandos.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -----------------------------
+   Base Colours & Reset
+----------------------------- */
+:root{
+  --green:#2dbf64;
+  --orange:#ff9f1a;
+  --red:#ff3b30;
+  --ink:#0f0f0f;
+  --bg:#f2f4f8;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+.hidden{display:none!important}
+
+/* -----------------------------
+   Start Screen
+----------------------------- */
+.screen{display:none;min-height:100dvh;}
+.screen.active{display:block}
+
+.start-wrap{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  background-image:url('../images/background.jpg');
+  background-size:cover;
+  background-position:center;
+}
+
+.card{
+  width:min(840px,92vw);
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(6px);
+  border-radius:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  padding:28px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:12px;
+}
+.logo{
+  width:min(240px,40vw);
+  height:auto;
+  display:block;
+}
+.title{
+  font-family:'Nandso', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size:clamp(36px,6vw,64px);
+  line-height:1.05;
+  margin:8px 0 4px;
+}
+.subtitle{
+  opacity:.8;
+  font-size:clamp(16px,2.8vw,18px);
+  margin:0 0 18px;
+}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{
+  border:none;
+  border-radius:16px;
+  padding:16px 18px;
+  font-size:20px;
+  font-weight:800;
+  cursor:pointer;
+  background:#ff6b00;
+  color:#fff;
+  min-width:220px;
+  box-shadow:0 8px 16px rgba(255,107,0,.25);
+}
+.btn.secondary{
+  background:#111;
+  color:#fff;
+  box-shadow:0 8px 16px rgba(0,0,0,.25);
+}
+
+/* -----------------------------
+   Order Page
+----------------------------- */
+.topbar{
+  position:sticky;
+  top:0;
+  background:#0e3448;
+  color:#fff;
+  padding:10px 14px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  font-weight:800;
+  justify-content:space-between;
+}
+.timer{
+  font-feature-settings:'tnum' 1;
+  font-variant-numeric:tabular-nums;
+}
+
+.columns{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  padding:12px;
+}
+.col{
+  background:#e9eef3;
+  border-radius:10px;
+  min-height:70vh;
+  position:relative;
+  overflow:hidden;
+  border:2px solid #d3dbe4;
+}
+.col-title{
+  position:sticky;
+  top:0;
+  background:#d6e1ea;
+  padding:8px 12px;
+  font-weight:900;
+  border-bottom:2px solid #c3d0db;
+}
+.ticket{
+  background:var(--card);
+  border-radius:10px;
+  margin:8px;
+  box-shadow:0 8px 16px rgba(0,0,0,.10);
+  overflow:hidden;
+  border:2px solid #e6e6e6;
+  transition:transform .1s ease;
+  cursor:pointer;
+}
+.ticket:active{transform:scale(.99)}
+.ticket-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 12px;
+  font-weight:900;
+  color:#fff;
+}
+.state-green{background:var(--green)}
+.state-orange{background:var(--orange)}
+.state-red{background:var(--red)}
+.state-flash{animation:flash 1s infinite}
+@keyframes flash{
+  0%,100%{background:#ff3b30}
+  50%{background:#fff;color:#ff3b30}
+}
+.badge.small{
+  background:rgba(255,255,255,.2);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:14px;
+}
+.ticket-body{
+  display:flex;
+  gap:12px;
+  padding:12px;
+  align-items:center;
+}
+.ticket-body img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  border-radius:8px;
+  background:#f6f6f6;
+}
+.item{font-size:20px;font-weight:800}
+.ticket.completed{
+  filter:grayscale(1) brightness(.95);
+  opacity:.9;
+  pointer-events:none;
+}
+.col-empty{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:#99a2ad;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+
+/* -----------------------------
+   Score Modal
+----------------------------- */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal.active{display:flex}
+
+.modal-card{
+  background:#fff;
+  border-radius:18px;
+  max-width:520px;
+  width:92vw;
+  padding:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  text-align:center;
+  font-family:'Nandso', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+.modal-card h2{margin:6px 0 10px}
+.modal-card .big{font-size:48px;font-weight:900;margin:6px 0 16px}
+
+#timeVal,
+#pbVal,
+#btnAgain,
+.modal-card p.subtitle{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif!important;
+}
+
+.pb{font-weight:900}
+.badge.new{
+  display:inline-block;
+  background:#0bbf6a;
+  color:#fff;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:14px;
+  margin-left:8px;
+}
+.chip{
+  display:inline-block;
+  color:#fff;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:16px;
+  vertical-align:middle;
+}
+
+/* -----------------------------
+   PB Toast + Effects
+----------------------------- */
+.pb-toast{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.35);
+  z-index:9999;
+}
+.pb-toast.show{
+  display:flex;
+  animation:fadeout 2.2s ease forwards;
+}
+.pb-toast-card{
+  background:#111;
+  color:#ffd700;
+  font-weight:900;
+  font-size:clamp(22px,4.5vw,36px);
+  padding:16px 22px;
+  border-radius:16px;
+  box-shadow:0 16px 60px rgba(0,0,0,.45);
+  border:2px solid #ffd700;
+  text-align:center;
+}
+@keyframes fadeout{
+  0%{opacity:1}
+  70%{opacity:1}
+  100%{opacity:0}
+}
+
+/* Gold flashing highlight for new record times */
+.gold-flash{
+  color:#d4af37;
+  animation:goldblink 1.2s ease-in-out 10;
+}
+@keyframes goldblink{
+  0%,100%{text-shadow:none}
+  50%{color:#ffd700;text-shadow:0 0 18px rgba(255,215,0,.95)}
+}
